@@ -1,5 +1,5 @@
 # NOTE: intentionally includes older dependencies for dependency-scanning tests.
 Flask==1.0.2       # older Flask release
 requests==2.18.4   # older requests with known issues
-PyYAML==3.13       # older PyYAML (unsafe load risks in some usage)
+PyYAML==5.4        # Updated from 3.13 to 5.4 to fix CVE-2020-14343 (arbitrary code execution vulnerability)
 boto3==1.7.0       # older boto3 version
