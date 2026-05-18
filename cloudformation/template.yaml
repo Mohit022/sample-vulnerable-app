@@ -7,7 +7,9 @@ Resources:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: sample-app-bucket-12345
-      AccessControl: PublicRead                 # Issue 1: public read ACL
+      # FIX: Removed PublicRead ACL to prevent public READ access (CWE-284)
+      # Changed from 'PublicRead' to 'Private' to ensure bucket is not publicly accessible
+      AccessControl: Private
       # Added cross-region replication configuration for improved data durability and availability
       ReplicationConfiguration:
         Role: !GetAtt ReplicationRole.Arn
