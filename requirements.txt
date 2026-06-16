@@ -3,4 +3,5 @@ Flask==1.0.2       # older Flask release
 requests==2.18.4   # older requests with known issues
 PyYAML==3.13       # older PyYAML (unsafe load risks in some usage)
 boto3==1.7.0       # older boto3 version
-pymongo==3.6.0     # older pymongo — NoSQL injection test (Issue 7)
+pymongo==3.6.0     # older pymongo -- NoSQL injection test (Issue 7)
+Flask-Limiter==1.4 # rate limiting for /greet and /user endpoints
