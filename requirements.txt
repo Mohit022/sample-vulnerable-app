@@ -1,6 +1,10 @@
-# NOTE: intentionally includes older dependencies for dependency-scanning tests.
-Flask==1.0.2       # older Flask release
-requests==2.18.4   # older requests with known issues
-PyYAML==3.13       # older PyYAML (unsafe load risks in some usage)
-boto3==1.7.0       # older boto3 version
-pymongo==3.6.0     # older pymongo — NoSQL injection test (Issue 7)
+# Dependencies pinned to latest stable versions (June 2026)
+# FIX (CWE-1104 / SCA): Upgraded all packages with known CVEs
+
+Flask==3.0.3
+requests==2.32.3
+PyYAML==6.0.1
+boto3==1.34.144
+pymongo==4.7.3
+flask-limiter==3.7.0
+Werkzeug==3.0.3
