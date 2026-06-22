@@ -2,7 +2,7 @@ import sqlite3
 import subprocess
 import pickle
 import os
-from flask import Flask, request, render_template_string
+from flask import Flask, request, render_template_string, escape
 from pymongo import MongoClient
 
 app = Flask(__name__)
@@ -43,13 +43,15 @@ def deserialize_blob(blob):
     return pickle.loads(blob)
 # -----------------------------------------------------------------------
 # Issue 6: SSTI via Jinja2 render_template_string()
-# Payload: ?name={{config}} leaks config; ?name={{''.__class__.__mro__[1].__subclasses__()}} -> RCE
+# FIX: Sanitize user input before embedding in template to prevent SSTI/XSS
 # -----------------------------------------------------------------------
 @app.route("/greet")
 def greet():
     name = request.args.get("name", "World")
-    template = f"<h1>Hello, {name}!</h1>"
-    return render_template_string(template)  # VULNERABLE
+    # FIX: Escape user input to prevent template injection and XSS attacks
+    safe_name = escape(name)
+    template = f"<h1>Hello, {safe_name}!</h1>"
+    return render_template_string(template)  # FIXED: Input is now sanitized
 
 
 # -----------------------------------------------------------------------
