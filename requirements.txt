@@ -1,6 +1,6 @@
 # NOTE: intentionally includes older dependencies for dependency-scanning tests.
 Flask==1.0.2       # older Flask release
 requests==2.18.4   # older requests with known issues
-PyYAML==5.1        # Fixed: Updated from 3.13 to 5.1 to remediate CVE-2017-18342 (arbitrary code execution via yaml.load())
+PyYAML==5.2        # Fixed: Updated from 5.1 to 5.2 to remediate CVE-2019-20477 (class deserialization vulnerability in load/load_all functions)
 boto3==1.7.0       # older boto3 version
 pymongo==3.6.0     # older pymongo — NoSQL injection test (Issue 7)
